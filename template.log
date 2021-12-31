@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.5.27)  29 DEC 2021 20:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.5.27)  30 DEC 2021 22:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -408,24 +408,24 @@ File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
 (./template.aux)
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -483,7 +483,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 50.
+Package hyperref Info: Link coloring OFF on input line 53.
 
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -496,40 +496,81 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count308
 )
-LaTeX Info: Redefining \ref on input line 50.
-LaTeX Info: Redefining \pageref on input line 50.
-LaTeX Info: Redefining \nameref on input line 50.
+LaTeX Info: Redefining \ref on input line 53.
+LaTeX Info: Redefining \pageref on input line 53.
+LaTeX Info: Redefining \nameref on input line 53.
 
 (./template.out) (./template.out)
 \@outlinefile=\write3
 \openout3 = `template.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 75.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 75.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./template.aux
 )
+<pictures/DFS_SP_description.png, id=8, 674.52pt x 443.15562pt>
+File: pictures/DFS_SP_description.png Graphic file (type png)
+<use pictures/DFS_SP_description.png>
+Package pdftex.def Info: pictures/DFS_SP_description.png  used on input line 27
+7.
+(pdftex.def)             Requested size: 196.53482pt x 129.1204pt.
+<pictures/DFS_SP.png, id=10, 671.50874pt x 344.78813pt>
+File: pictures/DFS_SP.png Graphic file (type png)
+<use pictures/DFS_SP.png>
+Package pdftex.def Info: pictures/DFS_SP.png  used on input line 284.
+(pdftex.def)             Requested size: 196.53482pt x 100.91193pt.
+<pictures/SP_DFS.png, id=11, 602.25pt x 358.33875pt>
+File: pictures/SP_DFS.png Graphic file (type png)
+<use pictures/SP_DFS.png>
+Package pdftex.def Info: pictures/SP_DFS.png  used on input line 291.
+(pdftex.def)             Requested size: 196.53482pt x 116.93988pt.
+<pictures/SP_DFS_2.png, id=12, 668.99937pt x 262.48062pt>
+File: pictures/SP_DFS_2.png Graphic file (type png)
+<use pictures/SP_DFS_2.png>
+Package pdftex.def Info: pictures/SP_DFS_2.png  used on input line 295.
+(pdftex.def)             Requested size: 196.53482pt x 77.1107pt.
+<pictures/Viterbi_1.png, id=13, 676.5275pt x 132.495pt>
+File: pictures/Viterbi_1.png Graphic file (type png)
+<use pictures/Viterbi_1.png>
+Package pdftex.def Info: pictures/Viterbi_1.png  used on input line 324.
+(pdftex.def)             Requested size: 196.53482pt x 38.48927pt.
+ [1
+
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./pictures/DFS_
+SP_description.png> <./pictures/DFS_SP.png> <./pictures/SP_DFS.png> <./pictures
+/SP_DFS_2.png>]
+<pictures/Viterbi_2.png, id=37, 658.46pt x 294.09875pt>
+File: pictures/Viterbi_2.png Graphic file (type png)
+<use pictures/Viterbi_2.png>
+Package pdftex.def Info: pictures/Viterbi_2.png  used on input line 328.
+(pdftex.def)             Requested size: 196.53482pt x 87.78154pt.
+<pictures/LCM.png, id=38, 530.48187pt x 355.82938pt>
+File: pictures/LCM.png Graphic file (type png)
+<use pictures/LCM.png>
+Package pdftex.def Info: pictures/LCM.png  used on input line 336.
+(pdftex.def)             Requested size: 196.53482pt x 131.82854pt.
+
+[2 <./pictures/Viterbi_1.png> <./pictures/Viterbi_2.png> <./pictures/LCM.png>]
+(./template.aux)
 Package rerunfilecheck Info: File `template.out' has not changed.
 (rerunfilecheck)             Checksum: A15974DABB2CCC961C55B57D058B026E;142.
  ) 
 Here is how much of TeX's memory you used:
- 9853 strings out of 478754
- 141643 string characters out of 5858221
- 488009 words of memory out of 5000000
- 27443 multiletter control sequences out of 15000+600000
- 405947 words of font info for 37 fonts, out of 8000000 for 9000
+ 9909 strings out of 478754
+ 142900 string characters out of 5858221
+ 509823 words of memory out of 5000000
+ 27488 multiletter control sequences out of 15000+600000
+ 406296 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,8n,66p,334b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,66p,334b,497s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb><c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2021/texmf-dist/
@@ -539,11 +580,14 @@ lic/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
 pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/te
 xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021
-/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on template.pdf (1 page, 127309 bytes).
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msam7.pfb><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msbm5.pfb><c:/texlive/2021/texmf-dist/fonts/ty
+pe1/public/amsfonts/symbols/msbm7.pfb>
+Output written on template.pdf (2 pages, 915464 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 47 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
- 9 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 93 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
+ 4 named destinations out of 1000 (max. 500000)
+ 44 words of extra memory for PDF output out of 10000 (max. 10000000)
 

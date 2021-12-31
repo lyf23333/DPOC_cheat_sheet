@@ -10,6 +10,9 @@
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
+\newenvironment{Figure}
+{\par\medskip\noindent\minipage{\linewidth}}
+{\endminipage\par\medskip}
 
 % Sets page margins.
 \geometry{top=.2in,left=.2in,right=.2in,bottom=.2in}
@@ -90,7 +93,8 @@ Construct an optimal policy $\pi ^ *$ s.t. $\forall x \in S_0$:\\
 *Open loop control can never give better performance than closed loop control ($u_k$ depends on $x_k$)
 since open loop control is a special case of closed loop control.
 In the absence of disturbances $w_k$, the two give theoretically the same
-performance.\\
+performance.
+\\
 
 Consider a system with $N_x$ distinct states and $N_u$ distinct control inputs:
 There are a total of $N_u ^ N$ different open loop strategies.
@@ -167,7 +171,7 @@ $ \forall x \in S_k, y \in \{1,...,m\}, k = N-1,...,0$
 % lecture 4
 \textbf{Infinite Horizon Problem:} as N goes infinity, let $\mathbf{V_l(.)=J_{N-l}(.)}$, V converges, so we have $J(x) = \underset{u \in U_k(x)}{min} \underset{(w | x=x,u=u)}{E} [g(x,u,w) + J(f(x,u,w))], \forall x \in S$, i.e. \textbf{Bellman Equation} $->$ optimal policy is time invariant.
 
-\textbf{Stochastic Shortest Path Problem}\\
+\textbf{Stochastic Shortest Path Problem } (SSP)\\
 $\bullet$ \textbf{Dynamics:} $x_{k+1}=w_k, P(w_k = j | x_k=i, u_k = u) = P_{ij}(u)$(time-invariant transition probability), $\forall x_k \in S, u \in U(i)$\\
 $U, S$ are finite, $\bullet$ \textbf{Cost:}\\
 $J_{\pi}(i) = \underset{(X_1, W_0| x_0 = i)}{E} [\sum_{i=0}^{N-1} g(x_k, \mu_k(x_k), w_k)]$
@@ -184,7 +188,8 @@ BE exists for the SSP problem, which will then be the optimal cost.\\
 *It ensures that a policy exists for which the probability of reaching the
 termination state goes to one as the time horizon N goes to infinity.
 It also ensures that the policies for which this does not occur incur infinite
-cost, which ensures that there are no non-positive cycles.\\
+cost, which ensures that there are no non-positive cycles.
+\\
 % `\end` statements to match the `\begin`s.
 
 \textbf{Theorem for SSP:}*under assumption 4.1 and 4.2,\\
@@ -194,7 +199,8 @@ where $S^{+} = S \backslash {0}$ and $q(i,u)=\underset{(w|x=i,u=u)}{E} [g(x,u,w)
 $J^{*}(i) = \underset{u\in U(i)}{min} (q(i,u) + \sum_{j=1}^{n} P_{ij}(u) J^{*}(j)), \forall i \in S^{+}$\\
 3. The solution to the BE is unique\\
 4. The minimizing u for each $i \in S^{+}$ of the BE gives an optimal policy,
-which is proper.
+which is proper.
+
 
 % Lecture 5
 \textbf{Value Iteration:}(1) above, until a threshold for $\Vert V_{l+1}(i) - V_l(i) \Vert$ is reached\\
@@ -207,7 +213,158 @@ $\bullet$ \textbf{Policy Improvement: }
 Obtain a new stationary policy $\mu^{h+1}$:\\
 $\mu^{h+1}(i) = \underset{u\in U(i)}{argmin} (q(i,u) + \sum_{j=1}^{n} P_{ij}(u) J_{\mu^h}(j)), \forall i \in S^{+}$, iterate until $J_{\mu^{h+1}}(i) = J_{\mu^h}(i)$ for all $i \in S^{+}$\\
 
+\textbf{Computational Complexity: }\\
+$\bullet$ \textbf{PI: }- Stage 1 solves a system of n linear equations in n unknowns, i.e. $O(n^3)$
+– Stage 2 involves n minimizations over p possible control inputs, and evaluating the sum takes n steps. Thus, the complexity is $O(n^2 p)$
+$\bullet$ \textbf{VI: } n minimizations over p possible control inputs, and evaluating the sum takes n steps. Thus, the complexity is $O(n^2 p)$
+
+* At each iteration, PI is more computationally expensive than VI. But theoretically it takes an infinite number of iterations for VI to converge, whereas with PI, in the worst case the number of iterations is $p^n$.
+\textbf{Other variants of PI and VI: }\\
+$\bullet$ \textit{Gauss-Seidel Update: } use new values in VI\\
+For $i = 1$ to $n:$\\
+$V(i) \leftarrow \underset{u \in U(i)}{min} (q(i,u) + \sum_{j=1}^{n} P_{ij}(u)V(j))$\\
+
+$\bullet$\textit{Asynchronous PI: ???}\\
+$\bullet$ \textit{Connection to Linear Algebra: }\\
+Stage 1 of PI $\rightarrow J = G + PJ \rightarrow (I-P)J=G$\\
+*there exists a unique solution for $J$ if and only if $(I - P)$ is invertible. $(I - P)$ is guaranteed to be invertible when the policy is proper. \\
+*$(I-P) ^ {-1} = \sum_{k=0}^{\infty} P^k$
+
+% Lecture 6
+\textbf{Linear Programming: }\\
+$\underset{V}{maximize} \ \sum_{i\in S^{+}} V(i) \qquad  $ s.t.\\
+$V(i) \leq (q(i,u) + \sum_{j=1}^{n} P_{ij} (u) V(j)), \forall u \in U(i), i \in S^{+}$
+
+\textbf{Discounted Problem: }\\
+We introduce \textit{discount factor} $\alpha$,\\
+$J_{\pi}(i) = \underset{(X_1,W_0|x_0=i)}{E}[\sum_{k=0}^{N-1} \alpha ^k \tilde{g}(x_k,\mu_k(x_k),w_k)]$\\
+
+\textbf{Auxiliary SSP Problem: } for discounted problem\\
+$\bullet$ State: $x_k \in S = S^{+} \cup \{0\} = \{0,1,...,n\}$, 0 is virtual termination state\\
+$\bullet$ Control: $U(x_k) \forall x_k \in S^{+}$ remains same, $U(0) = {stay}$.\\
+Policy $\pi = (\mu_0(.), \mu_1(.),...,\mu_{N-1} (.))$, s.t. $u_k=\mu_k(x_k), u_k \in U(x_k), \forall x_k \in S$ \\
+$\bullet$ Dynamics: \\
+$P_{ij}(u) = \alpha \tilde{P}_{ij}(u), u \in U(i), \forall i,j \in S^{+}$\\
+$P_{i0}(u) = 1 - \alpha , u \in U(i), \forall i \in S^{+}$\\
+$P_{0j}(u) = 0, u = stay, \forall j \in S^{+}$\\
+$P_{00}(u) = 1, u = stay$\\
+$\bullet$ Cost:\\
+$g(x_k,u_k,w_k) = \alpha ^ {-1} \tilde{g}(x_k,u_k,w_k), \forall u_k\in U(x_k),  x_k,w_k \in S^{+}$\\
+$g(x_k,u_k,0) = 0, \forall u_k\in U(x_k),  x_k \in S^{+}$\\
+$g(0,stay,0)=0$\\
+$\bullet$$J_{\pi}(r) = \underset{(X_1,W_0|x_0=i)}{E}[\sum_{k=0}^{N-1} g(x_k,\mu_k(x_k),w_k)]$\\
+
+% Lecture 7
+\textbf{The shortest Path (SP) Problem}\\
+$\bullet$ Graph:
+defined by a finite vertex space $V$ and a weighted edge space $C = \{(i,j,c_{i,j})\in V \times V \times  \mathbb{R} \cup \{\infty \} | i,j\in V \}$ where $c_{ij}$ denotes the arc length or cost.\\
+$\bullet$ Path: A path is defined as an ordered list of nodes, that is $Q=(i_1,i_2,...,i_q)$\\
+*The set of all paths that start at some node $S\in V$ and end at node $T\in V$ is denoted by $\mathbb{Q}_{S,T}$.\\
+$\bullet$ Objective: Determine $Q^{*} = \underset{Q\in \mathbb{Q}_{S,T}}{argmin} J_Q$
+
+* Assumption for SP: no negative cycles\\
+
+\textbf{Deterministic Finite State (DFS) Problem}\\
+(no expected value, no transition probability, no disturbances)\\
+
+$\bullet$ Dynamics\\ 
+$x_{k+1} = f_k\{x_k,u_k\}, x_k\in S_k, k=0,...,N, u_k \in U_k(x_k), k=0,...,N-1$ (no input for k=N)\\
+$\bullet$ Cost function: $g_N(x_N) + \sum_{k=0}^{N-1} g_k(x_k, u_k)$\\
+
+\textbf{DFS $\rightarrow$ SP:}\\
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/DFS_SP_description.png}
+\end{Figure}
+
+Stage:0,...,N; state:1,...n
+
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/DFS_SP.png}
+\end{Figure}
+
+\textbf{SP $\rightarrow$ DFS}
+
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/SP_DFS.png}
+\end{Figure}
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/SP_DFS_2.png}
+\end{Figure}
+
+*Remark: We can terminate the algorithm early if $J_k(i) = J_{k+1}(i)$ for all $i\in V \backslash \{T\}$\\
+
+
+\textbf{Hidden Markov Models: }
+$\bullet$Dynamics: $x_{k+1} = w_k, x_k \in S, $
+$P_{ij} = p_{w|x}(j|i), \forall i,j \in S$
+the distributions $p_{x_0}$ and $p_{w|x}$ are given (\textit{Markov Chain})\\
+$\bullet$ Measurement: $M_{ij}(z) = p_{z|x,w}(z|i,j)$ (given, \textit{likelihood function})\\
+$\bullet$ Objective: Given a measurement sequence $Z_1 = (z_1,...,z_N)$, find the "most likely" state trajectory $X_0=(x_0,...,x_N) = \underset{X_0}{argmax} p(X_0|Z_1)$
+
+\textbf{Viterbi Algorithm: }\\
+$p(X_0, Z_1) = p(X_0|Z_1)p(Z_1) \rightarrow argmax p(X_0,Z_1)$ \\
+$p(X_0,Z_1) = p(x_0) \prod_{k=1}^{N} P_{x_{k-1}x_k}  M_{x_{k-1}x_k}(z_k)$\\
+$\Longrightarrow \underset{X_0}{minimize}(c_{S,(0,x_0)} + \sum_{k=1}^{N} c_{(k-1,x_{k-1}), (k,x_k)})$\\
+
+
+%\[ c_{S,(0,x_0)} = \left\{ \begin{array}{ll}
+%	-ln(p(x_0)) & \mbox{if $ p(x_0) > 0$};\\
+%	\infty & \mbox{if $p(x_0) = 0$}.\end{array} \right. \] 
+%
+%\[ c_{(k-1,x_{k-1}),(k,x_k)} = \left\{ \begin{array}{ll}
+%	-ln(P_{x_{k-1}x_k}M_{x_{k-1}x_k}(z_k)) & \mbox{if $ P_{x_{k-1}x_k}M_{x_{k-1}x_k}(z_k) > 0$};\\
+%	\infty & \mbox{if $P_{x_{k-1}x_k}M_{x_{k-1}x_k}(z_k) = 0$}.\end{array} \right. \] 
+
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/Viterbi_1.png}
+\end{Figure}
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/Viterbi_2.png}
+\end{Figure}
+
+% Lecture 8
+
+\textbf{Label correcting methods:}\\
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/LCM.png}
+\end{Figure}
+Initialization: Place node S in OPEN, set $d_S=0, d_j=\infty \forall j\in V \backslash\{S\}$\\
+*Theorem:  If there exists at least one finite cost path
+from S to T, then the LCA terminates with $d_T = J_{Q^{*}}$. Otherwise, the LCA termimnates with $\infty$.
+
+$\bullet$ \textbf{Depth-First Search} or “last in, first out” strategy, that is, a node is always removed from the top of the OPEN bin and each node entering OPEN is placed at the top. It is often implemented as a stack.\\
+$\bullet$ \textbf{Breadth-First Search} or “first in, first out” strategy; that is, a node is always removed from the top of the OPEN bin and each node entering OPEN is placed at the bottom. It is often implemented as a queue.\\
+$\bullet$ \textbf{Best-First Search (Dijkstra’s Algorithm)}: At each iteration, the node
+that is removed from OPEN is the node $i^{*}$ where $d_{i^{*}} = \underset{i \in OPEN}{min} d_i$, i.e. remove the node that currently has the best label.\\
+$\bullet$ \textbf{$A^{*}$-algorithm:}in step 2 of LCA, we strengthen requirement of a node j being admitted to OPEN from $d_i+c_{i,j} < d_T$ to $d_i+c_{i,j}+h_j < d_T$, where $h_j$ is some positive lower bound on the cost to get from node j to T (heuristic).
+
+% Lecture 9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{multicols*}
+
 
 \end{document}
