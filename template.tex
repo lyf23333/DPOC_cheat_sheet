@@ -346,23 +346,76 @@ that is removed from OPEN is the node $i^{*}$ where $d_{i^{*}} = \underset{i \in
 $\bullet$ \textbf{$A^{*}$-algorithm:}in step 2 of LCA, we strengthen requirement of a node j being admitted to OPEN from $d_i+c_{i,j} < d_T$ to $d_i+c_{i,j}+h_j < d_T$, where $h_j$ is some positive lower bound on the cost to get from node j to T (heuristic).
 
 % Lecture 9
+\textbf{Deterministic Continuous Time Model:}\\
+$\bullet$ Dynamics: $\dot{x}(t) = f(x(t),u(t)), 0 \leq t \leq T$,\\
+where $x(t) \in S=\mathbb{R}^n$ and $u(t)\in U \subset \mathbb{R}^m$\\
+$\bullet$ Feedback control law: let $\mu(.,.)$ be an \textit{admissible control law} that maps state $x \in S$ at time $t$ to control input $u(t)$: $u(t) = \mu (t,x), u(t)\in U, \forall t \in [0,T], \forall x\in S$\\
+$\bullet$ Cost: $J_{\mu}(0,x) = h(x(T)) + \int_{0}^{T}g(x(\tau),u(\tau)) d\tau$\\
+$\bullet$ Objective: Construct an optimal feedback control law $\mu^{*} \in \Pi$ s.t. $J_{\mu^{*}} (0,x) \leq J_{\mu} (0,x), \forall \mu \in \Pi, \forall x \in S$\\
 
+\textbf{Assumption for existence and uniqueness: }\\
+For any admissible control law $\mu$, initial time $t \in [0,T]$  and initial condition $x(t) \in S$, there exists a unique state trajectory $x(\tau)$ that satisfied: $\dot{x}(\tau) = f(x(\tau),u(\tau)), t \leq \tau \leq T$
 
+*required for the problem to be well-defined
 
+\textbf{Hamilton-Jacobi-Bellman (HJB) Equation}\\
+$ 0 = \underset{u \in U}{min} [g(x,u) + \frac{\partial J^{*}(t,x)}{\partial t} + \frac{\partial J^{*}(t,x)}{\partial x}f(x,u)]$, $\forall t \in [0,T], \forall x \in S$, subject to terminal state $J^{*}(T,x) = h(x)$\\
 
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/HJB.png}
+\end{Figure}
 
+*The optimal cost-to-go function may sometimes be not differentiable w.r.t. x or t at some places, thereby not satisfying the HJB. $\rightarrow$ HJB is in general not a necessary condition for optimality, but it is sufficient.
+In this case we may use generalized solutions like piecewise continuous function to apply HJB.
 
+% Lecture 10
+\textbf{Partial Derivative} of $F(x,t)$ is $\frac{\partial J(t,x)}{\partial t}$\\
+Partial Derivative of $F(x(t),t)$ is
+$\frac{\partial J(t,x(t))}{\partial t} = \frac{\partial J(t,x)}{\partial t}|_{x=x(t)} + \frac{\partial J(t,x)}{\partial x}|_{x=x(t)} \frac{\partial x(t)}{\partial t}$\\
+\textbf{Total derivative} of $F(x(t),t)$ is
+$\frac{\partial J(t,x(t))}{\partial t} = \frac{\partial J(t,x)}{\partial t}|_{x=x(t)} + \frac{\partial J(t,x)}{\partial x}|_{x=x(t)} \frac{dx(t)}{dt}$
 
+\textbf{Lemma:}\\
+$\frac{\partial (\underset{u\in U}{min} F(t,x,u))}{\partial t} = \frac{\partial F(t,x,u)}{\partial t}|_{u=\mu^{*}(t,x)}$\\
+$\frac{\partial (\underset{u\in U}{min} F(t,x,u))}{\partial x} = \frac{\partial F(t,x,u)}{\partial x}|_{u=\mu^{*}(t,x)}$\\
 
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/MP.png}
+\end{Figure}
+*1.$p(t) = \frac{\partial J(t,x)}{\partial x}^T $\\
 
+2.The Minimum Principle provides necessary conditions for optimality. If a
+control trajectory satisfies these conditions, it is not necessarily optimal.\\
 
+3.In general, if the Hamiltonian is linear in u, the maximum or minimum of the
+Hamiltonian can only be attained on the boundaries of $U$. The resulting control trajectory is known as \textbf{bang-bang control}.\\
 
+4. HJB is sufficient condition for optimality and the Minimum Principle is necessary condition.\\
 
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{pictures/MP2.png}
+\end{Figure}
 
+% Lecture 11
 
+\textbf{Fixed Terminal State:}\\
+Instead of using $p(T)$, we use $x(T)$\\
+$\dot{x}(t) = f(x(t),u(t)), x(0)=x_0, x(T)=x_T,$ \\
+$ \dot{p}(t) = - \frac{\partial H(x,u,p)}{\partial x}|^T_{x(t),u(t),p(t)}$\\
+*if only some of terminal states are fixed, then use them $x_i(T) = x_{T,i} , \forall i \in I$, for the other unfixed states, still use $p_j(T) = - \frac{\partial h(x)}{\partial x_j}|_{x(T)}, \forall j \notin I$\\
 
+\textbf{Free Initial State:}\\
+If $x_0$ is not given, instead, an additional cost $l(x(0))$ is given, total cost = $l(x(0)) + J(0,x(0))$, \\
+then we use $p(0) = -\frac{\partial l(x)}{\partial x}|^T_{x(0)} $ instead of  $x_0$\\
 
+\textbf{Free Terminal Time:}\\
+Suppose the initial state and/or the terminal state are given, but the terminal time T is free.\\
+In this case, $p(T) \rightarrow x_T$ and $H(x(t),u(t),p(t))=0$ instead of const.\\
 
+%Not finished!!!!!!!!!!!!!!!!!!11
 
 \end{multicols*}
 
