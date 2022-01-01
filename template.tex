@@ -387,7 +387,8 @@ $\frac{\partial (\underset{u\in U}{min} F(t,x,u))}{\partial x} = \frac{\partial 
 *1.$p(t) = \frac{\partial J(t,x)}{\partial x}^T $\\
 
 2.The Minimum Principle provides necessary conditions for optimality. If a
-control trajectory satisfies these conditions, it is not necessarily optimal.\\
+control trajectory satisfies these conditions, it is not necessarily optimal.
+\\
 
 3.In general, if the Hamiltonian is linear in u, the maximum or minimum of the
 Hamiltonian can only be attained on the boundaries of $U$. The resulting control trajectory is known as \textbf{bang-bang control}.\\
@@ -415,7 +416,36 @@ then we use $p(0) = -\frac{\partial l(x)}{\partial x}|^T_{x(0)} $ instead of  $x
 Suppose the initial state and/or the terminal state are given, but the terminal time T is free.\\
 In this case, $p(T) \rightarrow x_T$ and $H(x(t),u(t),p(t))=0$ instead of const.\\
 
-%Not finished!!!!!!!!!!!!!!!!!!11
+\textbf{Time Varying System:}\\
+$\dot{x}(t)=f(x(t),u(t),\textbf{t}),$ \\ 
+cost $=h(x(T)) + \int_{0}^{T}g(x(\tau),u(\tau), \tau) d\tau$\\
+Introduce $y(t) = t, y(0)= 0, \dot{y}(t)=1 $\\
+$z(t) = (x(t),y(t))$\\
+
+$ \dot{z}(t) = \begin{bmatrix}
+	f(x(t),u(t),y(t))\\ 
+	1
+\end{bmatrix} = \bar{f}(z(t),u(t))$,\\
+%cost $=\bar{h}(x(T)) + \int_{0}^{T}\bar{g}(x(\tau),u(\tau), \tau) d\tau$\\  
+hence, the Hamiltonian: $\bar{H}(z,u,\bar{p}) = \bar{g}(z,u) + \bar{p}^T\bar{f}(z,u) $ \\ 
+$= g(x,u,y) + p^T f(x,u,y) + q = H(x,u,p,y) + q$\\
+with $z = (x,y)$ and $\bar{p}(t) = (p(t),q(t))$\\
+Hence, conditions of the Minimum Principle:\\
+$\dot{p}(t) = - \frac{\partial H(x,u,p)}{\partial x}|^T_{x(t),u(t),p(t)}$\\
+$p(T) = \frac{\partial h(x)}{\partial x}|^T_{x(T)}$\\
+$u(t) = \underset{u\in U}{argmin} H(x(t),u,p(t))$\\
+*$\dot{q}(t) = - \frac{\partial \bar{H}(x,u,p)}{\partial t}|^T_{z(t),u(t),\bar{p}(t)}$\\
+*$\bar{H}(z(t),u(t),\bar{p}(t)) = H(x,u,p,t) + q(t) = $ constant\\
+
+Note that the only difference between the TI and the TV cases is that the Hamiltonian in the latter one need not be constant along the optimal trajectory.\\
+
+\textbf{Singular Problems}\\
+In some cases, the Minimum Principle condition $u(t) = \underset{u\in U}{argmin} H(x(t),u,p(t),t)$ is insufficient to determine $u(t)$ for all $t$, because the values of $x(t)$ and $p(t)$ are such that $H(x(t),u,p(t))$ is independent of $u$ over a nontrivial interval of time.\\
+*Their optimal trajectories consist of portions, called \textbf{regular arcs}, where $u(t)$ can be determined from the minimum principle condition, and other portions, called \textbf{singular arcs}, which can be determined from the condition that the Hamiltonian is independent of u.
+
+
+
+
 
 \end{multicols*}
 
