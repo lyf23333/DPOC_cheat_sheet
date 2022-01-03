@@ -72,7 +72,7 @@
 
 % This is the "magic" pandoc variable. (This is where your Rmarkdown document is inserted.)
 \section{Dynamic Programming}
-
+\textbf{Variance} $Var(X) = E[(X-E[X])^2]$ = $E[X^2]-E[X]^2$\\
 % lecture 1
 \textbf{Dynamics:} \\
 $ \bullet$ $x_{k+1}=f_k(x_k, u_k, w_k),\ k = 0,1,...,N-1$\\
@@ -437,7 +437,8 @@ $u(t) = \underset{u\in U}{argmin} H(x(t),u,p(t))$\\
 *$\dot{q}(t) = - \frac{\partial \bar{H}(x,u,p)}{\partial t}|^T_{z(t),u(t),\bar{p}(t)}$\\
 *$\bar{H}(z(t),u(t),\bar{p}(t)) = H(x,u,p,t) + q(t) = $ constant\\
 
-Note that the only difference between the TI and the TV cases is that the Hamiltonian in the latter one need not be constant along the optimal trajectory.\\
+Note that the only difference between the TI and the TV cases is that the Hamiltonian in the latter one need not be constant along the optimal trajectory.
+\\
 
 \textbf{Singular Problems}\\
 In some cases, the Minimum Principle condition $u(t) = \underset{u\in U}{argmin} H(x(t),u,p(t),t)$ is insufficient to determine $u(t)$ for all $t$, because the values of $x(t)$ and $p(t)$ are such that $H(x(t),u,p(t))$ is independent of $u$ over a nontrivial interval of time.\\
